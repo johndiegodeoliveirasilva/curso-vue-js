@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">
+      <h1>Hello {{ toDown(toUpper(name)) }}</h1>
+      <h2>O meu salario é {{ real(salary) }}</h2>
+      <input type="text" placeholder="Input your salary" v-model="salary">
+    </div>
+
+    <script>
+      const { createApp } = Vue
+      createApp({
+        data() {
+          return {
+            name: 'Hcode Treinamentos',
+            salary: 0
+          }
+        },
+        methods: {
+          toUpper(value) {
+            return value.toUpperCase();
+          },
+          toDown(value) {
+            return value.toLowerCase();
+          },
+          real(value) {
+            return `R$ ${parseInt(value).toFixed(2)}`
+          }
+        }
+      }).mount('#app')
+    </script>
+  </body>
+</html>
+
